@@ -1,5 +1,6 @@
 import React, { useState, useReducer } from "react";
 import { initialState, simpleReducer } from "../reducers/reducer";
+import "./Todo.css";
 
 const ToDoComponent = () => {
   const [newTodo, setNewTodo] = useState("");
@@ -20,7 +21,7 @@ const ToDoComponent = () => {
   };
 
   const toggleTodo = event => {
-    dispatch({ type: "TOGGLE_TODO" });
+    dispatch({ type: "TOGGLE", id: state.todos.id });
   };
 
   return (
@@ -39,9 +40,22 @@ const ToDoComponent = () => {
         </label>
         <button type="submit">Add</button>
       </form>
-      {state.todos.map(task => {
-        return <p>{task.item}</p>;
-      })}
+      <div>
+        {state.todos.map(task => {
+          return (
+            <div
+              className={`taskContainer${
+                state.todos.completed ? " completed" : ""
+              }`}
+              onClick={toggleTodo}
+            >
+              <div className="taskContainer">
+                <p>{task.item}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 };
