@@ -15,12 +15,16 @@ const ToDoComponent = () => {
   const addTodo = event => {
     event.preventDefault();
     dispatch({ type: "AddTodo", payload: newTodo });
+    setNewTodo("");
     console.log("this is state", state);
-    return { ...state };
+  };
+
+  const toggleTodo = event => {
+    dispatch({ type: "TOGGLE_TODO" });
   };
 
   return (
-    <div>
+    <>
       <div>
         <h1> Shawn's To Do List</h1>
       </div>
@@ -35,8 +39,10 @@ const ToDoComponent = () => {
         </label>
         <button type="submit">Add</button>
       </form>
-      <div>{state.item}</div>
-    </div>
+      {state.todos.map(task => {
+        return <p>{task.item}</p>;
+      })}
+    </>
   );
 };
 
