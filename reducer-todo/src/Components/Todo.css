@@ -13,8 +13,8 @@
 }
 
 .taskContainer.completed {
-  background-color: blue;
-  color: yellow;
+  background-color: orange;
+  color: blue;
   text-decoration: line-through;
 }
 

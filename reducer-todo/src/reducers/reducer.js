@@ -18,23 +18,45 @@ export const simpleReducer = (state, action) => {
           { item: action.payload, completed: false, id: new Date() }
         ]
       };
+
+    case "CLEAR":
+      let newClearArray = [...state.todos];
+      let clearId = state.todos.filter(todo => {
+        return todo.completed === false;
+      });
+      console.log("this is in clear", clearId);
+      //   newClearArray[clearId];
+      return { ...state, todos: clearId };
+
     case "TOGGLE":
-      return {
-        todos: state.todos.map(todo => {
-          if (state.todos.id === todo.id) {
-            return {
-              ...state,
-              completed: !state.completed
-            };
-          }
-          return state;
-        })
-      };
+      // vv this creates a new mutable array
+      let newArray = [...state.todos];
+      //vv this finds the index of the specific array item compared to what I click
+      let toDoId = state.todos.findIndex(todo => {
+        return todo.id === action.payload;
+      });
+      //this toggles v
+      newArray[toDoId].completed = !newArray[toDoId].completed;
+      //this toggles ^
+      console.log(toDoId);
+      //vv this returns the new array. along with the rest of the state to toggle
+      return { ...state, todos: newArray };
     default:
       return state;
   }
 };
 
+//clear button, get rid of all completed - true.
+//   return {
+//     todos: state.todos.map(todo => {
+//       if (state.todos.id === todo.id) {
+//         return {
+//           ...state,
+//           completed: !state.completed
+//         };
+//       }
+//     })
+//   };
 //   return state.todos.map(todo => {
 //     if (todo.id !== action.id) {
 //       return todo;

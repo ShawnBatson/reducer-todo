@@ -20,8 +20,12 @@ const ToDoComponent = () => {
     console.log("this is state", state);
   };
 
-  const toggleTodo = event => {
-    dispatch({ type: "TOGGLE", id: state.todos.id });
+  const clearTodo = completed => {
+    dispatch({ type: "CLEAR", payload: completed });
+  };
+
+  const toggleTodo = id => {
+    dispatch({ type: "TOGGLE", payload: id });
   };
 
   return (
@@ -39,15 +43,16 @@ const ToDoComponent = () => {
           />
         </label>
         <button type="submit">Add</button>
+        <button type="submit" onClick={() => clearTodo()}>
+          Clear
+        </button>
       </form>
       <div>
         {state.todos.map(task => {
           return (
             <div
-              className={`taskContainer${
-                state.todos.completed ? " completed" : ""
-              }`}
-              onClick={toggleTodo}
+              className={`taskContainer${task.completed ? "completed" : ""}`}
+              onClick={() => toggleTodo(task.id)}
             >
               <div className="taskContainer">
                 <p>{task.item}</p>
