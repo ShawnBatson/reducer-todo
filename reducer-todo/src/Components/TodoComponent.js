@@ -51,7 +51,7 @@ const ToDoComponent = () => {
         {state.todos.map(task => {
           return (
             <div
-              className={`taskContainer${task.completed ? "completed" : ""}`}
+              className={`taskContainer${task.completed ? " completed" : ""}`}
               onClick={() => toggleTodo(task.id)}
             >
               <div className="taskContainer">

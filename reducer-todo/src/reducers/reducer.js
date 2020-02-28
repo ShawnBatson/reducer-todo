@@ -20,13 +20,13 @@ export const simpleReducer = (state, action) => {
       };
 
     case "CLEAR":
-      let newClearArray = [...state.todos];
+      //   let newClearArray = [...state.todos];
       let clearId = state.todos.filter(todo => {
         return todo.completed === false;
       });
       console.log("this is in clear", clearId);
       //   newClearArray[clearId];
-      return { ...state, todos: clearId };
+      return { todos: clearId };
 
     case "TOGGLE":
       // vv this creates a new mutable array
@@ -45,25 +45,3 @@ export const simpleReducer = (state, action) => {
       return state;
   }
 };
-
-//clear button, get rid of all completed - true.
-//   return {
-//     todos: state.todos.map(todo => {
-//       if (state.todos.id === todo.id) {
-//         return {
-//           ...state,
-//           completed: !state.completed
-//         };
-//       }
-//     })
-//   };
-//   return state.todos.map(todo => {
-//     if (todo.id !== action.id) {
-//       return todo;
-//     } else {
-//       return {
-//         ...todo,
-//         completed: !todo.completed
-//       };
-//     }
-//   });
