@@ -20,12 +20,10 @@ export const simpleReducer = (state, action) => {
       };
 
     case "CLEAR":
-      //   let newClearArray = [...state.todos];
       let clearId = state.todos.filter(todo => {
         return todo.completed === false;
       });
       console.log("this is in clear", clearId);
-      //   newClearArray[clearId];
       return { todos: clearId };
 
     case "TOGGLE":
