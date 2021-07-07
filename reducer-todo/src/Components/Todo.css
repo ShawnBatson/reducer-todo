@@ -1,0 +1,28 @@
+.todoForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.totalContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1%;
+}
+
+.taskContainer.completed {
+  background-color: orange;
+  color: blue;
+  text-decoration: line-through;
+}
+
+.taskContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 50%;
+  height: 0, auto;
+}
